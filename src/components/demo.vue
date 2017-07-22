@@ -2,14 +2,14 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <circle-menu :menu-count=4 :icon-class=icons :menu-url-list=list></circle-menu>
+    <quick-menu :menu-count=4 :icon-class=icons :menu-url-list=list></quick-menu>
   </div>
 </template>
 
 <script>
-import circleMenu from './circleMenu.vue'
+import quickMenu from './quickMenu.vue'
 export default {
-  name: 'hello',
+  name: 'demo',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
@@ -19,7 +19,7 @@ export default {
     }
   },
   components:{
-    circleMenu
+    quickMenu
   }
 }
 </script>
