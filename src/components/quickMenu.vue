@@ -1,5 +1,5 @@
 <template>
-	<div class="quick-menu" ref="quickMenu">
+	<div class="quick-menu" ref="quickMenu" :style="quickMenuStyle">
     <div v-for="n in menuCount" class="sub-menu" :style="getSubMenu(n-1)">
         <a :href="menuUrlList[n-1]" :target="openNewTab" :style="subMenuStyle" @mouseover.stop="mouseEnterSubMenu" @mouseout.stop="mouseOutSubMenu">
           <i :class="iconClass[n-1]" :style="iconStyle" ref="icon"></i>
@@ -44,32 +44,29 @@ name:'quickMenu',
       type:Boolean,
       default:true
     },
-    menuSize:{
-      type:Number,
-      default:60
+    position:{
+      type:String,
+      default:'bottom-left'
     }
   },
   computed:{
     openNewTab(){
       return this.isOpenNewTab?'_self':'_blank'
     },
-    style () {
-      const style = {
-        width: this.menuSize + 'px',
-        height: this.menuSize + 'px'
-      }
-      const initialBackgroundAndFontStyle = {
-        backgroundColor: this.backgroundColor,
-        color: this.color
-      }
-      Object.assign(style, initialBackgroundAndFontStyle)
+    quickMenuStyle(){
+      const topPosition = {top:'30px'}, 
+      bottomPosition={bottom:'30px'},
+      leftPosition = {left:'30px'},
+      rightPosition = {right:'30px'}
 
+      let style = this.isTop?topPosition:bottomPosition
+      Object.assign(style, this.isLeft?leftPosition:rightPosition)
+      Object.assign(style,{transform: this.isLeft?"rotate(-180deg)":"rotate(180deg)"})
       return style
     },
     menuStyle(){
       const style = {
-        width: this.menuSize + 'px',
-        height: this.menuSize + 'px'
+        
       }
       const initialBackgroundAndFontStyle = {
         backgroundColor: this.backgroundColor,
@@ -84,8 +81,7 @@ name:'quickMenu',
     },
     subMenuStyle(){
       const style = {
-        width: this.menuSize + 'px',
-        height: this.menuSize + 'px',
+        
         fontSize: this.menuSize/2 + 'px'
 
       }
@@ -107,18 +103,26 @@ name:'quickMenu',
         marginTop: this.menuSize/4 + 'px'
       }
       return style
+    },
+    isTop(){
+      return !!~this.position.toLowerCase().indexOf('top')
+    },
+    isLeft(){
+      return !!~this.position.toLowerCase().indexOf('left')
     }
   },
   data(){
     return{
-      subMenu4:[["-160","0"],["-138.6","-80"],["-80","-138.6"],["0","-160"]],
-      subMenu3:[["-160","0"],["-113","-113"],["0","-160"]],
-      subMenu2:[["-160","0"],["0","-160"]]
+      menuSize:60,
+      subMenu4:[[["0","-160"],["-80","-138.6"],["-138.6","-80"],["-160","0"]],[["0","-160"],["80", "-138.6"],["138.6","-80"],["160","0"]],[["0","160"],["138.6","80"],["80","138.6"],["160","0"]],[["-160","0"],["-138.6","80"],["-80","138.6"],["0","160"]]],
+      subMenu3:[[["-160","0"],["-113","-113"],["0","-160"]],[["0","-160"],["113","-113"],["160","0"]],[["0","160"],["113","113"],["160","0"]],[["-160","0"],["-113","113"],["0","160"]]],
+      subMenu2:[[["-160","0"],["0","-160"]],[["0","-160"],["160","0"]],[["0","160"],["160","0"]],[["-160","0"],["0","160"]]]
     }
   },
   methods:{
     getSubMenu(n){
       let menuPosition = this.menuCount===4?this.subMenu4:this.menuCount===3?this.subMenu3:this.subMenu2
+      menuPosition = this.isTop&&this.isLeft?menuPosition[2]:this.isTop&&!this.isLeft?menuPosition[1]:!this.isTop&&this.isLeft?menuPosition[3]:menuPosition[0]
       return {top:menuPosition[n][0]+'px',left:menuPosition[n][1]+'px'}
     },
     toggleMenu(e){
@@ -127,12 +131,12 @@ name:'quickMenu',
       if(!~menuEl.className.indexOf(' active')){
          menuEl.className += ' active';
         menuIconEl.forEach( function(element, index) {
-          element.className += ' ss_animate';
+          element.className += ' menu-animate';
         });
       } else {
         menuEl.className = menuEl.className.replace(' active','');
         menuIconEl.forEach( function(element, index) {
-          element.className = element.className.replace(' ss_animate','');
+          element.className = element.className.replace(' menu-animate','');
         });
       }
       
@@ -258,32 +262,33 @@ name:'quickMenu',
     transform: translateY(-2px);
   }
 }
-.ss_animate {
+.menu-animate {
   -webkit-animation: badbounce 1s linear 1s;
   -moz-animation: badbounce 1s linear 1s;
   animation: badbounce 1s linear 1s;
 }
 
 .quick-menu {
-  bottom: 30px;
-  width: 60px;
-  height: 60px;
+  // top: 30px;
   color: #fff;
   position: fixed;
+  width: 60px;
+  height: 60px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   transition: all 1s ease;
   right: 30px;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+  // -webkit-transform: rotate(180deg);
+  // -moz-transform: rotate(180deg);
+  // -ms-transform: rotate(180deg);
+  // -o-transform: rotate(180deg);
+  // transform: rotate(180deg);
   > .menu {
     display: block;
     position: absolute;
     border-radius: 50% !important;
-    
+    width: 60px;
+  height: 60px;
     text-align: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
     color: #fff;
@@ -296,6 +301,8 @@ name:'quickMenu',
       position: absolute;
       left: 0px;
       top: 0px;
+      width: 60px;
+  height: 60px;
       -webkit-transform: rotate(180deg);
       -moz-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
@@ -362,7 +369,8 @@ name:'quickMenu',
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: absolute;
-    
+    width: 60px;
+  height: 60px;
     font-size: 30px;
     text-align: center;
     // background: #00796B;
@@ -389,11 +397,11 @@ name:'quickMenu',
     }
   }
   &.active{
-    -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+    -webkit-transform: rotate(0deg)!important;
+      -moz-transform: rotate(0deg)!important;
+      -ms-transform: rotate(0deg)!important;
+      -o-transform: rotate(0deg)!important;
+      transform: rotate(0deg)!important;
       .menu{
         -webkit-transform: scale(0.7);
         -moz-transform: scale(0.7);

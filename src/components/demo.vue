@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <quick-menu :menu-count=4 :icon-class=icons :menu-url-list=list></quick-menu>
+    <quick-menu :menu-count=4 :icon-class=icons :menu-url-list=list :background-color=color></quick-menu>
   </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       icons:["fa fa-search","fa fa-etsy","fa fa-user-o","fa fa-automobile"],
-      list:["http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/"]
+      list:["http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/"],
+      color:'#ffc3c5'
       
     }
   },
