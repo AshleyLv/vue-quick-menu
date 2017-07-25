@@ -46,7 +46,7 @@ name:'quickMenu',
     },
     position:{
       type:String,
-      default:'bottom-left'
+      default:'top-left'
     }
   },
   computed:{
