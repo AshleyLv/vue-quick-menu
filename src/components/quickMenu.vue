@@ -15,7 +15,6 @@
     </div>
 </template>
 <script>
-import 'font-awesome/css/font-awesome.min.css'
 	export default{
 name:'quickMenu',
   props:{
@@ -51,7 +50,7 @@ name:'quickMenu',
   },
   computed:{
     openNewTab(){
-      return this.isOpenNewTab?'_self':'_blank'
+      return this.isOpenNewTab?'_blank':'_self'
     },
     quickMenuStyle(){
       const topPosition = {top:'30px'}, 

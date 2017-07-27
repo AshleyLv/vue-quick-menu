@@ -302,7 +302,7 @@ a:hover { text-decoration: underline; }
 .main-content blockquote > :last-child { margin-bottom: 0; }
 .main-content table { display: block; width: 100%; overflow: auto; word-break: normal; word-break: keep-all; -webkit-overflow-scrolling: touch; }
 .main-content table th { font-weight: bold; }
-.main-content table th, .main-content table td { padding: 0.5rem 1rem; border: 1px solid #e9ebec; }
+.main-content table th, .main-content table td { padding: 0.5rem 1rem;  }
 .main-content dl { padding: 0; }
 .main-content dl dt { padding: 0; margin-top: 1rem; font-size: 1rem; font-weight: bold; }
 .main-content dl dd { padding: 0; margin-bottom: 1rem; }
@@ -316,3 +316,5 @@ a:hover { text-decoration: underline; }
 .site-footer-owner { display: block; font-weight: bold; }
 
 .site-footer-credits { color: #819198; }
+select{min-width: 194px}
+textarea{    min-width: 500px;resize: none;}
