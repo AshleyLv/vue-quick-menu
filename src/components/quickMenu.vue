@@ -41,7 +41,7 @@ name:'quickMenu',
     },
     isOpenNewTab:{
       type:Boolean,
-      default:true
+      default:false
     },
     position:{
       type:String,
@@ -99,7 +99,7 @@ name:'quickMenu',
     iconStyle(){
       const style = {
         
-        marginTop: this.menuSize/4 + 'px'
+        marginTop: (this.menuSize/4 - 2) + 'px'
       }
       return style
     },
@@ -443,21 +443,4 @@ name:'quickMenu',
     }
 }
 
-
-// .quick-menu div:nth-child(1) {
-//   top: 0px;
-//   left: -160px;
-// }
-// .quick-menu div:nth-child(2) {
-//   top: -80.0px;
-//   left: -138.56406px;
-// }
-// .quick-menu div:nth-child(3) {
-//   top: -138.56406px;
-//   left: -80.0px;
-// }
-// .quick-menu div:nth-child(4) {
-//   top: -160px;
-//   left: 0.0px;
-// }
 </style>

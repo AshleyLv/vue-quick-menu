@@ -2,7 +2,7 @@
   "name": "vue-quick-menu",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Ashley <ashley_lyf@icloud.com>",
+  "author": "ashleylv <ashley_lyf@icloud.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

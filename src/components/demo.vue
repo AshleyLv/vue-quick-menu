@@ -11,9 +11,9 @@
     <section class="main-content">
       <h1 id="color-sticker">Description</h1>
 
-      <p>This is a jQuery plugin, which allows you to adding stickers on your webpage.</p>
+      <p>This is web navigation component base on vue2.0+. It can be used in both PC and mobile.</p>
 
-      <h1 id="color-sticker">Demo</h1>
+      <h1>Demo</h1>
    
       
       <table>
@@ -39,18 +39,6 @@
           </td>
         </tr>
         <tr>
-          <td>Url List</td>
-          <td>
-            <textarea type="text" v-model="list"></textarea>
-          </td>
-        </tr>
-        <tr>
-          <td>Icon Class</td>
-          <td>
-            <textarea type="text" v-model="icons"></textarea>
-          </td>
-        </tr>
-        <tr>
           <td>Background Color</td>
           <td>
            <input type="color" v-model="backgroundColor">
@@ -65,16 +53,105 @@
          <tr>
           <td>Will open a new Tab</td>
           <td>
-           
+           <select v-model="isOpenNewTab">
+              <option>true</option>
+              <option>false</option>
+            </select>
           </td>
         </tr>
 
       </table>
      
+     <h1>Install</h1>
+     <pre><code>
+$ npm install vue-quick-menu --save
+     </code></pre>
+     <h1>Usage</h1>
+    <h3>ES6</h3>
+    <pre><code>
+import quickMenu from 'vue-quick-menu/dist/quickMenu'
+
+export default {
+  ...
+  components: {
+    quickMenu
+  },
+  ...
+}
+    </code></pre>
+    <pre><code>
+ &lt;quick-menu :menu-count=count :icon-class=icons :menu-url-list=list&gt;&lt;/quick-menu&gt;    
+    </code></pre>
+
+     <h1>Props</h1>
+     <table class="props">
+     <thead>
+       <tr>
+         <th>Name</th>
+         <th>Required</th>
+         <th>Default</th>
+         <th>Type</th>
+         <th>Description</th>
+       </tr>
+     </thead>
+       <tbody>
+         <tr>
+          <td>menuCount</td>
+          <td>true</td>
+          <td>4</td>
+          <td>Number</td>
+          <td>The number of menu item</td>
+        </tr>
+        <tr>
+          <td>menuUrlList</td>
+          <td>true</td>
+          <td>-</td>
+          <td>Array</td>
+          <td>An array of link of each menu item</td>
+        </tr>
+        <tr>
+          <td>iconClass</td>
+          <td>true</td>
+          <td>-</td>
+          <td>Array</td>
+          <td>An array of icon class of each menu item</td>
+        </tr>
+         <tr>
+          <td>position</td>
+          <td>false</td>
+          <td>top-left</td>
+          <td>top-left,top-right,bottom-left,bottom-right</td>
+          <td>The position of quick menu</td>
+        </tr>
+        <tr>
+          <td>backgroundColor</td>
+          <td>false</td>
+          <td>#009dc7</td>
+          <td>String</td>
+          <td>The background color of quick menu</td>
+        </tr>
+        <tr>
+          <td>color</td>
+          <td>false</td>
+          <td>#ffffff</td>
+          <td>String</td>
+          <td>The color of quick menu icon</td>
+        </tr>
+        <tr>
+          <td>isOpenNewTab</td>
+          <td>false</td>
+          <td>false</td>
+          <td>Boolean</td>
+          <td>If the menu will open a new tab after click</td>
+        </tr>
+        
+      </tbody>
+
+     </table>
         
 
     </section>
-    <quick-menu :menu-count=count :icon-class=icons :menu-url-list=list :background-color=backgroundColor :color=color :position=position :is-open-new-tab=isOpenNewTab></quick-menu>
+    <quick-menu :menu-count=getCount :icon-class=icons :menu-url-list=list :background-color=backgroundColor :color=color :position=position :is-open-new-tab=getIsOpenNewTab></quick-menu>
 
   </div>
 </template>
@@ -87,13 +164,21 @@ export default {
   data () {
     return {
       count:4,
-      icons:["fa fa-search","fa fa-etsy","fa fa-user-o","fa fa-automobile"],
+      icons:["fa fa-github","fa fa-comment","fa fa-code","fa fa-envelope"],
       list:["http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/"],
-      backgroundColor:'#ffc3c5',
+      backgroundColor:'#17c4c5',
       color:'#ffffff',
       position:'top-left',
       isOpenNewTab:false
       
+    }
+  },
+  computed:{
+    getCount(){
+      return Number(this.count)
+    },
+    getIsOpenNewTab(){
+      return Boolean(this.isOpenNewTab)
     }
   },
   components:{
