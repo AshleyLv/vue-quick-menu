@@ -65,35 +65,17 @@ name:'quickMenu',
     },
     menuStyle(){
       const style = {
-        
-      }
-      const initialBackgroundAndFontStyle = {
         backgroundColor: this.backgroundColor,
         color: this.color
       }
-
-      
-
-      Object.assign(style, initialBackgroundAndFontStyle)
-
       return style
     },
     subMenuStyle(){
       const style = {
-        
-        fontSize: this.menuSize/2 + 'px'
-
-      }
-      const initialBackgroundAndFontStyle = {
+        fontSize: this.menuSize/2 + 'px',
         backgroundColor: this.backgroundColor,
-        
-        
-        color: this.color,
-        
+        color: this.color
       }
-
-      Object.assign(style, initialBackgroundAndFontStyle)
-
       return style
     },
     iconStyle(){
@@ -190,81 +172,10 @@ name:'quickMenu',
 	}
 </script>
 <style lang="less">
-	@-webkit-keyframes badbounce {
-  0%,100% {
-    -webkit-transform: translateY(0px);
-  }
-  10% {
-    -webkit-transform: translateY(6px);
-  }
-  30% {
-    -webkit-transform: translateY(-4px);
-  }
-  70% {
-    -webkit-transform: translateY(3px);
-  }
-  90% {
-    -webkit-transform: translateY(-2px);
-  }
-}
-@-moz-keyframes badbounce {
-  0%,100% {
-    -moz-transform: translateY(0px);
-  }
-  10% {
-    -moz-transform: translateY(6px);
-  }
-  30% {
-    -moz-transform: translateY(-4px);
-  }
-  70% {
-    -moz-transform: translateY(3px);
-  }
-  90% {
-    -moz-transform: translateY(-2px);
-  }
-}
-@keyframes badbounce {
-  0%,100% {
-    -webkit-transform: translateY(0px);
-    -moz-transform: translateY(0px);
-    -ms-transform: translateY(0px);
-    -o-transform: translateY(0px);
-    transform: translateY(0px);
-  }
-  10% {
-    -webkit-transform: translateY(6px);
-    -moz-transform: translateY(6px);
-    -ms-transform: translateY(6px);
-    -o-transform: translateY(6px);
-    transform: translateY(6px);
-  }
-  30% {
-    -webkit-transform: translateY(-4px);
-    -moz-transform: translateY(-4px);
-    -ms-transform: translateY(-4px);
-    -o-transform: translateY(-4px);
-    transform: translateY(-4px);
-  }
-  70% {
-    -webkit-transform: translateY(3px);
-    -moz-transform: translateY(3px);
-    -ms-transform: translateY(3px);
-    -o-transform: translateY(3px);
-    transform: translateY(3px);
-  }
-  90% {
-    -webkit-transform: translateY(-2px);
-    -moz-transform: translateY(-2px);
-    -ms-transform: translateY(-2px);
-    -o-transform: translateY(-2px);
-    transform: translateY(-2px);
-  }
-}
 .menu-animate {
-  -webkit-animation: badbounce 1s linear 1s;
-  -moz-animation: badbounce 1s linear 1s;
-  animation: badbounce 1s linear 1s;
+  -webkit-animation: bounce 1s linear 1s;
+  -moz-animation: bounce 1s linear 1s;
+  animation: bounce 1s linear 1s;
 }
 
 .quick-menu {
@@ -281,7 +192,7 @@ name:'quickMenu',
     position: absolute;
     border-radius: 50% !important;
     width: 60px;
-  height: 60px;
+    height: 60px;
     text-align: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
     color: #fff;
@@ -295,7 +206,7 @@ name:'quickMenu',
       left: 0px;
       top: 0px;
       width: 60px;
-  height: 60px;
+      height: 60px;
       -webkit-transform: rotate(180deg);
       -moz-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
@@ -363,7 +274,7 @@ name:'quickMenu',
     box-sizing: border-box;
     position: absolute;
     width: 60px;
-  height: 60px;
+    height: 60px;
     font-size: 30px;
     text-align: center;
     border-radius: 50% !important;
@@ -433,5 +344,75 @@ name:'quickMenu',
       }
     }
 }
-
+@-webkit-keyframes bounce {
+  0%,100% {
+    -webkit-transform: translateY(0px);
+  }
+  10% {
+    -webkit-transform: translateY(6px);
+  }
+  30% {
+    -webkit-transform: translateY(-4px);
+  }
+  70% {
+    -webkit-transform: translateY(3px);
+  }
+  90% {
+    -webkit-transform: translateY(-2px);
+  }
+}
+@-moz-keyframes bounce {
+  0%,100% {
+    -moz-transform: translateY(0px);
+  }
+  10% {
+    -moz-transform: translateY(6px);
+  }
+  30% {
+    -moz-transform: translateY(-4px);
+  }
+  70% {
+    -moz-transform: translateY(3px);
+  }
+  90% {
+    -moz-transform: translateY(-2px);
+  }
+}
+@keyframes bounce {
+  0%,100% {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  10% {
+    -webkit-transform: translateY(6px);
+    -moz-transform: translateY(6px);
+    -ms-transform: translateY(6px);
+    -o-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+  30% {
+    -webkit-transform: translateY(-4px);
+    -moz-transform: translateY(-4px);
+    -ms-transform: translateY(-4px);
+    -o-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+  70% {
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+    transform: translateY(3px);
+  }
+  90% {
+    -webkit-transform: translateY(-2px);
+    -moz-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
+    -o-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+}
 </style>
