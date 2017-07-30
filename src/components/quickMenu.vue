@@ -268,7 +268,6 @@ name:'quickMenu',
 }
 
 .quick-menu {
-  // top: 30px;
   color: #fff;
   position: fixed;
   width: 60px;
@@ -277,11 +276,6 @@ name:'quickMenu',
   -moz-transition: all 1s ease;
   transition: all 1s ease;
   right: 30px;
-  // -webkit-transform: rotate(180deg);
-  // -moz-transform: rotate(180deg);
-  // -ms-transform: rotate(180deg);
-  // -o-transform: rotate(180deg);
-  // transform: rotate(180deg);
   > .menu {
     display: block;
     position: absolute;
@@ -372,12 +366,10 @@ name:'quickMenu',
   height: 60px;
     font-size: 30px;
     text-align: center;
-    // background: #00796B;
     border-radius: 50% !important;
     display: table;
     a{
       text-decoration: none;
-      // color:#fff;
       display: inline-block;
       border-radius: 50% !important;
       width: 100%;
@@ -390,7 +382,6 @@ name:'quickMenu',
         }
       }
       &:hover {
-        // background: #009688;
         cursor: pointer;
       }
     }

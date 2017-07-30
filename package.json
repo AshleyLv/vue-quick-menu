@@ -12,6 +12,7 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e"
   },
+  
   "dependencies": {
     "font-awesome": "^4.7.0",
     "less": "^2.7.2",
