@@ -1,6 +1,7 @@
 # vue-quick-menu
 
-> A Vue.js project
+> A Vue.js project 
+[demo](https://ashleylv.github.io/vue-quick-menu/dist/index.html#/)
 
 ## Build Setup
 
