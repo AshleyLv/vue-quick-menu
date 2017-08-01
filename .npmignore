@@ -1,0 +1,16 @@
+.idea
+.vscode
+.DS_STORE
+node_modules
+demo
+.gitignore
+.npmignore
+.babelrc
+yarn.lock
+build
+example
+src/animation/*.css
+webpack.config.js
+index.html
+
+

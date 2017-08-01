@@ -1,3 +1,2 @@
-import quickMenu from './components/quickMenu.vue'
-
+import quickMenu from './quickMenu.vue'
 export default quickMenu;

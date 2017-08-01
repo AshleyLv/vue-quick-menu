@@ -157,8 +157,9 @@ export default {
 </template>
 
 <script>
-import 'font-awesome/css/font-awesome.min.css'
-import quickMenu from '../components/quickMenu.vue'
+import Vue from 'vue'
+import quickMenu from '../../dist'
+Vue.component(quickMenu.name,quickMenu)
 export default {
   name: 'demo',
   data () {
@@ -180,14 +181,11 @@ export default {
     getIsOpenNewTab(){
       return Boolean(this.isOpenNewTab)
     }
-  },
-  components:{
-    quickMenu
   }
 }
 </script>
 
 <style type="text/css">
-  @import '../assets/demo.css'
+  @import './style/demo.css'
 
 </style>
