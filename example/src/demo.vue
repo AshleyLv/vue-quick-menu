@@ -67,9 +67,12 @@
 $ npm install vue-quick-menu --save
      </code></pre>
      <h1>Usage</h1>
-    <h3>ES6</h3>
+      <pre><code>
+ &lt;quick-menu :menu-count=count :icon-class=icons :menu-url-list=list&gt;&lt;/quick-menu&gt;    
+    </code></pre>
     <pre><code>
-import quickMenu from 'vue-quick-menu/dist/quickMenu'
+import Vue from 'vue'
+import quickMenu from 'vue-quick-menu'
 
 export default {
   ...
@@ -79,9 +82,7 @@ export default {
   ...
 }
     </code></pre>
-    <pre><code>
- &lt;quick-menu :menu-count=count :icon-class=icons :menu-url-list=list&gt;&lt;/quick-menu&gt;    
-    </code></pre>
+   
 
      <h1>Props</h1>
      <table class="props">
@@ -166,7 +167,7 @@ export default {
     return {
       count:4,
       icons:["fa fa-github","fa fa-comment","fa fa-code","fa fa-envelope"],
-      list:["http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/"],
+      list:["https://github.com/AshleyLv/vue-quick-menu","https://www.npmjs.com/package/vue-quick-menu","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/"],
       backgroundColor:'#17c4c5',
       color:'#ffffff',
       position:'top-left',
