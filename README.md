@@ -1,31 +1,41 @@
-# vue-quick-menu
+# vue-quick-menu [![NPM version](https://img.shields.io/npm/v/vue-quick-menu.svg)](https://www.npmjs.com/package/vue-quick-menu)
 
-> A Vue.js project 
-[demo](https://ashleylv.github.io/vue-quick-menu/dist/index.html#/)
+> This is web navigation component base on vue2.0+. It can be used in both PC and mobile.
+[demo](https://ashleylv.github.io/vue-quick-menu/index.html)
 
-## Build Setup
+## Installation
 
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+ npm install vue-quick-menu --sav
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Usage
+``` xml
+<quick-menu :menu-count=count :icon-class=icons :menu-url-list=list></quick-menu>
+```
+
+``` javascript
+import Vue from 'vue'
+import quickMenu from 'vue-quick-menu'
+
+export default {
+  ...
+  components: {
+    quickMenu
+  },
+  ...
+}
+```
+## Props
+
+Property|Type|Default|Description
+---|---|---|---
+menuCount|Number|4|The number of menu item
+menuUrlList|Array|-|An array of link of each menu item
+iconClass|Array|-|An array of icon class of each menu item
+position|top-left,top-right,bottom-left or bottom-right|top-left|The position of quick menu
+backgroundColor|String|#009dc7|The background color of quick menu
+color|String|#ffffff|The color of quick menu icon
+animation|string|zoom|animation type
+duration|number|300|animation duration
+isOpenNewTab|Boolean|false|If the menu will open a new tab after click
