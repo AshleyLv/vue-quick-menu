@@ -2,7 +2,7 @@
 	<div class="quick-menu" ref="quickMenu" :style="quickMenuStyle">
     <div v-for="n in menuCount" class="sub-menu" :style="getSubMenu(n-1)">
         <a :href="menuUrlList[n-1]" :target="openNewTab" :style="subMenuStyle" @mouseover.stop="mouseEnterSubMenu" @mouseout.stop="mouseOutSubMenu">
-          <i :class="iconClass[n-1]" :style="iconStyle" ref="icon"></i>
+          <i :class="iconClass[n-1]" ref="icon"></i>
         </a>
 
       </div>
@@ -33,7 +33,7 @@ name:'quickMenu',
     },
     backgroundColor:{
       type:String,
-      default:'#009dc7'
+      default:'#20babb'
     },
     color:{
       type:String,
@@ -64,27 +64,19 @@ name:'quickMenu',
       return style
     },
     menuStyle(){
-      const style = {
+      return {
         backgroundColor: this.backgroundColor,
         color: this.color
       }
-      return style
     },
     subMenuStyle(){
       const style = {
-        fontSize: this.menuSize/2 + 'px',
         backgroundColor: this.backgroundColor,
         color: this.color
       }
       return style
     },
-    iconStyle(){
-      const style = {
-        
-        marginTop: (this.menuSize/4 - 2) + 'px'
-      }
-      return style
-    },
+   
     isTop(){
       return !!~this.position.toLowerCase().indexOf('top')
     },
@@ -115,30 +107,30 @@ name:'quickMenu',
           element.className += ' menu-animate';
         });
       } else {
-        menuEl.className = menuEl.className.replace(' active','');
+        menuEl.className = menuEl.className.replace(' active','')
         menuIconEl.forEach( function(element, index) {
-          element.className = element.className.replace(' menu-animate','');
+        element.className = element.className.replace(' menu-animate','')
         });
       }
       
     },
     mouseEnterSubMenu(e){
       if(e.target.tagName==='A'){
-        e.target.style.backgroundColor = this.lightenColor(this.backgroundColor, 20);
-        e.target.firstElementChild.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
+        e.target.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
+        // e.target.firstElementChild.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
       } else if(e.target.tagName==='I'){
-        e.target.parentElement.style.backgroundColor = this.lightenColor(this.backgroundColor, 20);
-        e.target.style.backgroundColor = this.lightenColor(this.backgroundColor, 20);
+        e.target.parentElement.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
+        // e.target.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
       }
       
     },
     mouseOutSubMenu(e){
       if(e.target.tagName==='A'){
-        e.target.style.backgroundColor = this.backgroundColor;
-        e.target.firstElementChild.style.backgroundColor = this.backgroundColor;
+        e.target.style.backgroundColor = this.backgroundColor
+        // e.target.firstElementChild.style.backgroundColor = this.backgroundColor
       }else if(e.target.tagName==='I'){
-        e.target.parentElement.style.backgroundColor = this.backgroundColor;
-        e.target.style.backgroundColor = this.backgroundColor;
+        e.target.parentElement.style.backgroundColor = this.backgroundColor
+        // e.target.style.backgroundColor = this.backgroundColor
       }
       
     },
@@ -231,7 +223,7 @@ name:'quickMenu',
         -ms-transform-origin: 0% 50%;
         -o-transform-origin: 0% 50%;
         transform-origin: 0% 50%;
-        &:before {
+        &:before ,&:after{
           -webkit-transition: all 1s ease;
           -moz-transition: all 1s ease;
           transition: all 1s ease;
@@ -240,7 +232,6 @@ name:'quickMenu',
           height: 3px;
           background: #fff;
           position: absolute;
-          margin-top: 30%;
           left: 0px;
           -webkit-transform-origin: 0% 50%;
           -moz-transform-origin: 0% 50%;
@@ -248,22 +239,11 @@ name:'quickMenu',
           -o-transform-origin: 0% 50%;
           transform-origin: 0% 50%;
         }
+        &:before{
+          margin-top: 30%;
+        }
         &:after {
-          -webkit-transition: all 1s ease;
-          -moz-transition: all 1s ease;
-          transition: all 1s ease;
-          content: '';
-          width: 28px;
-          height: 3px;
-          background: #fff;
-          position: absolute;
           margin-top: 60%;
-          left: 0px;
-          -webkit-transform-origin: 0% 50%;
-          -moz-transform-origin: 0% 50%;
-          -ms-transform-origin: 0% 50%;
-          -o-transform-origin: 0% 50%;
-          transform-origin: 0% 50%;
         }
       }
     }
@@ -278,8 +258,8 @@ name:'quickMenu',
     font-size: 30px;
     text-align: center;
     border-radius: 50% !important;
-    display: table;
     a{
+      outline: none;
       text-decoration: none;
       display: inline-block;
       border-radius: 50% !important;
@@ -287,7 +267,9 @@ name:'quickMenu',
       height: 100%;
       i {
         outline: none;
-
+        font-size:30px;
+        margin-top:12px;
+        background:transparent;
         &:before{
           vertical-align: middle;
         }
