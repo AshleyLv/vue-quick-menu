@@ -6,7 +6,7 @@
 ## Installation
 
 ``` bash
- npm install vue-quick-menu --sav
+ npm install vue-quick-menu --save
 ```
 
 ## Usage
