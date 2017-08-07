@@ -36,5 +36,4 @@ iconClass|Array|-|An array of icon class of each menu item
 position|top-left,top-right,bottom-left or bottom-right|top-left|The position of quick menu
 backgroundColor|String|#009dc7|The background color of quick menu
 color|String|#ffffff|The color of quick menu icon
-duration|number|300|animation duration
 isOpenNewTab|Boolean|false|If the menu will open a new tab after click
