@@ -8,6 +8,7 @@
       
       
     </section>
+     <router-view></router-view>
     <section class="main-content">
       <h1 id="color-sticker">Description</h1>
 
@@ -152,22 +153,21 @@ export default {
         
 
     </section>
-    <quick-menu :menu-count=getCount :icon-class=icons :menu-url-list=list :background-color=backgroundColor :color=color :position=position :is-open-new-tab=getIsOpenNewTab></quick-menu>
+    <quick-menu :menu-count=getCount :icon-class=icons :menu-url-list=list :background-color=backgroundColor :color=color :position=position :is-open-new-tab=getIsOpenNewTab @process=print></quick-menu>
 
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import quickMenu from '../../dist'
-Vue.component(quickMenu.name,quickMenu)
+import quickMenu from '../../src/quickMenu.vue'
 export default {
   name: 'demo',
   data () {
     return {
       count:4,
       icons:["fa fa-github","fa fa-comment","fa fa-code","fa fa-envelope"],
-      list:["https://github.com/AshleyLv/vue-quick-menu","https://www.npmjs.com/package/vue-quick-menu","http://www.wheelsfactory.cn/","http://www.wheelsfactory.cn/"],
+      list:[{'isLink':false},{'isLink':true,url:"/doo"},{'isLink':true,url:"/foo"},{'isLink':false}],
       backgroundColor:'#17c4c5',
       color:'#ffffff',
       position:'top-left',
@@ -175,6 +175,9 @@ export default {
       
     }
   },
+  components:{
+  'quickMenu':quickMenu
+},
   computed:{
     getCount(){
       return Number(this.count)
@@ -182,6 +185,17 @@ export default {
     getIsOpenNewTab(){
       return Boolean(this.isOpenNewTab)
     }
+  },
+  methods:{
+      print(key){
+      if(key===3){
+        console.log('please send me an email')
+      }
+      if(key===0){
+          window.open('https://github.com/AshleyLv/vue-quick-menu')
+        
+        }
+      }
   }
 }
 </script>
