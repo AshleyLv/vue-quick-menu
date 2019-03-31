@@ -1,1 +1,3 @@
-require('../src/index.js')
+import quickMenu from '../src/quickMenu.vue'
+export default quickMenu;
+
