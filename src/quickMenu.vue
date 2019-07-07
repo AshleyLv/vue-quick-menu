@@ -49,6 +49,11 @@ name:'quickMenu',
     position:{
       type:String,
       default:'top-left'
+    },
+    statusCallBack: {
+      type: Function,
+      default: () => {
+      }
     }
   },
   computed:{
@@ -109,11 +114,13 @@ name:'quickMenu',
         menuIconEl.forEach( function(element, index) {
           element.className += ' menu-animate';
         });
+        this.statusCallBack(true);
       } else {
         menuEl.className = menuEl.className.replace(' active','')
         menuIconEl.forEach( function(element, index) {
         element.className = element.className.replace(' menu-animate','')
         });
+        this.statusCallBack(false);
       }
       
     },
