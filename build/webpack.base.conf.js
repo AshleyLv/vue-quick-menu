@@ -1,22 +1,40 @@
-const webpack = require("webpack");
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["es2015", "stage-0"]
-            }
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
           }
-        ]
+        }
       },
       {
         test: /\.vue$/,
         use: ["vue-loader"]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader'
+          }
+        ]
       }
     ]
   },
@@ -26,5 +44,10 @@ module.exports = {
   resolve: {
     extensions: [".webpack.js", ".js", ".vue", ".ts"]
   },
-  plugins: [new webpack.optimize.ModuleConcatenationPlugin()]
+  plugins: [
+    new VueLoaderPlugin()
+  ],
+  optimization: {
+    concatenateModules: true //ModuleConcatenationPlugin
+  }
 };
