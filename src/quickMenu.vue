@@ -1,6 +1,6 @@
 <template>
 	<div class="quick-menu" ref="quickMenu" :style="quickMenuStyle">
-    <div v-for="(n,key) in menuCount" class="sub-menu" :style="getSubMenu(n-1)">
+    <div v-for="(n, key) in menuCount" :key="key" class="sub-menu" :style="getSubMenu(n-1)">
         <router-link v-if="menuUrlList[n-1].isLink" :to="menuUrlList[n-1].url" :target="openNewTab" :style="subMenuStyle" @mouseover.stop="mouseEnterSubMenu" @mouseout.stop="mouseOutSubMenu">
           <i :class="iconClass[n-1]" ref="icon"></i>
         </router-link>
@@ -17,6 +17,7 @@
       </div>
     </div>
 </template>
+
 <script>
 	export default{
 name:'quickMenu',
@@ -56,7 +57,7 @@ name:'quickMenu',
       return this.isOpenNewTab?'_blank':'_self'
     },
     quickMenuStyle(){
-      const topPosition = {top:'30px'}, 
+      const topPosition = {top:'30px'},
       bottomPosition={bottom:'30px'},
       leftPosition = {left:'30px'},
       rightPosition = {right:'30px'}
@@ -79,7 +80,7 @@ name:'quickMenu',
       }
       return style
     },
-   
+
     isTop(){
       return !!~this.position.toLowerCase().indexOf('top')
     },
@@ -115,7 +116,7 @@ name:'quickMenu',
         element.className = element.className.replace(' menu-animate','')
         });
       }
-      
+
     },
     processCallback(key){
       console.log(key)
@@ -129,7 +130,7 @@ name:'quickMenu',
         e.target.parentElement.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
         // e.target.style.backgroundColor = this.lightenColor(this.backgroundColor, 20)
       }
-      
+
     },
     mouseOutSubMenu(e){
       if(e.target.tagName==='A'){
@@ -139,7 +140,7 @@ name:'quickMenu',
         e.target.parentElement.style.backgroundColor = this.backgroundColor
         // e.target.style.backgroundColor = this.backgroundColor
       }
-      
+
     },
     lightenColor (hex, amt) {
 

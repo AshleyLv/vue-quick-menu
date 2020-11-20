@@ -1,5 +1,5 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.conf");
 
 module.exports = merge(baseWebpackConfig, {
@@ -13,6 +13,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   devServer: {
     contentBase: "./",
+    publicPath: "example/dist/",
     compress: true,
     port: 3000,
     stats: {
